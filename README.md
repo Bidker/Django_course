@@ -1,0 +1,1 @@
+Projekt robiony na podstawie kursu Django z serwisu https://strefakursow.pl/
