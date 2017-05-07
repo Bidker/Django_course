@@ -11,5 +11,14 @@
     <div class="article-intro">
     	<p> {{ article.content }} </p>
     </div>
+	<hr>
+	<h3>Komentarze</h3><!-- Komentarze -->
+	{% for c in article.comment_set.all %}
+		<div class="comment">
+			<p><span><em>{{ c.name }}</em></span></p>
+			<p><em>Opublikowano: {{ c.published }}</em></p>
+			<p>{{ c.content }}</p>
+		</div>
+	{% endfor %}
 
 {% endblock %}
