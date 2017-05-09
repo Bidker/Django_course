@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+
+{% block article %}
+
+	<form method="post" class="form horizontal well">{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit" class="save btn btn-default">Dodaj komentarz</button>
+	</form>
+
+{% endblock %}
