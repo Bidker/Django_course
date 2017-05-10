@@ -19,11 +19,18 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from articles import urls
+from kdcms import views
+
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'article/', include('articles.urls')),
+    url(r'^accounts/login/$', views.login, name = 'login'),
+    url(r'^accounts/auth/$', views.auth, name = 'auth'),
+    url(r'^accounts/logout/$', views.logout, name = 'logout'),
+    url(r'^accounts/loggedin/$', views.loggedin, name = 'loggedin'),
+    url(r'^accounts/invalid/$', views.invalid, name = 'invalid'),
 ]
 
 if settings.DEBUG:
