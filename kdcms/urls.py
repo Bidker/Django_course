@@ -27,10 +27,10 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'article/', include('articles.urls')),
     url(r'^accounts/login/$', views.login, name = 'login'),
-    url(r'^accounts/auth/$', views.auth, name = 'auth'),
+    url(r'^accounts/auth/$', views.auth_view, name = 'auth_view'),
     url(r'^accounts/logout/$', views.logout, name = 'logout'),
     url(r'^accounts/loggedin/$', views.loggedin, name = 'loggedin'),
-    url(r'^accounts/invalid/$', views.invalid, name = 'invalid'),
+    url(r'^accounts/invalid/$', views.invalid_login, name = 'invalid_login'),
 ]
 
 if settings.DEBUG:

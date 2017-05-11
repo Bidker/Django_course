@@ -10,25 +10,26 @@ def login(request):
     return render(request, 'login.html', c)
 
 
-def auth(request):
-    c = {}
-    c.update(csrf(request))
-    return render(request, 'login.html', c)
+def auth_view(request):
+    username = request.POST.get('username','')
+    password = request.POST.get('password','')
+    user = auth.authenticate(username=username, password=password)
+    
+    if user is not None:
+        auth.login(request,user)
+        return HttpResponseRedirect('/accounts/loggedin/')
+    else:
+        return HttpResponseRedirect('/accounts/invalid/')
 
 
 def logout(request):
-    c = {}
-    c.update(csrf(request))
-    return render(request, 'login.html', c)
+    auth.logout(request)
+    return render(request, 'logout.html')
 
 
 def loggedin(request):
-    c = {}
-    c.update(csrf(request))
-    return render(request, 'login.html', c)
+    return render(request, 'loggedin.html', {'user_name' : request.user.username })
 
 
-def invalid(request):
-    c = {}
-    c.update(csrf(request))
-    return render(request, 'login.html', c)
+def invalid_login(request):
+    return render(request, 'invalid_login.html')
