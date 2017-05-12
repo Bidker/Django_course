@@ -31,6 +31,9 @@ urlpatterns = [
     url(r'^accounts/logout/$', views.logout, name = 'logout'),
     url(r'^accounts/loggedin/$', views.loggedin, name = 'loggedin'),
     url(r'^accounts/invalid/$', views.invalid_login, name = 'invalid_login'),
+   
+    url(r'^accounts/create_user/$', views.create_user, name = 'create_user'),
+    url(r'^accounts/create_user_success/$', views.create_user_success, name = 'create_user_success'),
 ]
 
 if settings.DEBUG:

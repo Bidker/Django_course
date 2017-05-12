@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.template.context_processors import csrf, request
-
+from django.contrib.auth.forms import UserCreationForm
 
 def login(request):
     c = {}
@@ -33,3 +33,18 @@ def loggedin(request):
 
 def invalid_login(request):
     return render(request, 'invalid_login.html')
+
+def create_user(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/accounts/create_user_success/')
+    args = {}
+    args.update(csrf(request))
+    args['form'] = UserCreationForm()
+    
+    return render(request, 'create_user.html', args)
+
+def create_user_success(request):
+    return render(request, 'create_user_success.html')
