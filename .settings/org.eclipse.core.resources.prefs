@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
 encoding//articles/models.py=utf-8
 encoding//customhtml/models.py=utf-8
+encoding//userprofile/models.py=utf-8

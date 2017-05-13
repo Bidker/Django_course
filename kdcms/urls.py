@@ -26,6 +26,8 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'article/', include('articles.urls')),
+    url(r'accounts/', include('userprofile.urls')),
+    
     url(r'^accounts/login/$', views.login, name = 'login'),
     url(r'^accounts/auth/$', views.auth_view, name = 'auth_view'),
     url(r'^accounts/logout/$', views.logout, name = 'logout'),
