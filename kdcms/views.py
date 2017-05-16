@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from django.template.context_processors import csrf, request
+from django.template.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
 
 def login(request):

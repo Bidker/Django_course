@@ -3,7 +3,6 @@ from models import UserProfile
 
 class UserProfileForm(forms.ModelForm):
     
-    class Meta:
+    class Meta():
         model = UserProfile
-        fields = ('country'
-                  'age')
+        fields = ('country', 'age')
