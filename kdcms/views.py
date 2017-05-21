@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.template.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
+from notifications.models import Notifications
 
 def login(request):
     c = {}
@@ -28,7 +29,8 @@ def logout(request):
 
 
 def loggedin(request):
-    return render(request, 'loggedin.html', {'user_name' : request.user.username })
+    n = Notifications.objects.filter(user=request.user, viewed=False)
+    return render(request, 'loggedin.html', {'user_name' : request.user.username, 'notifications' : n })
 
 
 def invalid_login(request):
